@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ProductFinder - Example</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+<h1>Check the console</h1>
+<script src="../productFinder.js"></script>
+<script>
+    const products = [
+        {
+            "collection": "beads",
+            "name": "beads title",
+            "properties": ["material_silver 925", "weight_17g"],
+            "data": {
+                "background": "placeholder.png"
+            },
+            "price": 280,
+            "discount": false
+        },
+        {
+            "collection": "beads",
+            "name": "second beads title",
+            "properties": ["material_silver 925", "weight_15g"],
+            "data": {
+                "background": "placeholder.png"
+            },
+            "price": 500,
+            "discount": 250
+        }
+    ];
+
+    const SYSTEM = new ProductFinder();
+    SYSTEM.loadProducts(products);
+    SYSTEM.setFilter("discount", "50%");
+    SYSTEM.setFilter("price", "100:300");
+    SYSTEM.setFilter("property", "material_silver 925");
+    console.log(SYSTEM.getFilters());
+    console.log(SYSTEM.get());
+</script>
+</body>
+</html>
