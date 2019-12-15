@@ -17,6 +17,19 @@ const SYSTEM = new ProductFinder();
 SYSTEM.loadProducts(products);
 ```
 
+Schema of products
+
+```javascript
+const products = [
+ "name": String,
+ "properties": [String],
+ "price": Number,
+ "discount": Number|Boolean
+];
+```
+
+You can add custom fields
+
 ---
 
 ## The ``setFilter`` function :
