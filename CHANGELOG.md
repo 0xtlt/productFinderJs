@@ -1,4 +1,7 @@
-## 1.1.0 (December 15, 2019)
+## 1.1.1 (December 16, 2019)
+- Example of DOM updated to display the original price when a discount is detected
+
+## 1.1.0 (December 16, 2019)
 
 ### DOM update
 - Product Finder ``hasFilter`` function

@@ -76,7 +76,7 @@
     function display(products){
         let html = "";
         products.forEach(product => {
-            html += `<div>${product.name} | ${product.discount ? product.discount : product.price}€ | (${product.properties.join(";")})</div>`
+            html += `<div>${product.name} | ${product.discount ? `<del>${product.price}€</del> -> ` : ""} ${product.discount ? product.discount : product.price}€ | (${product.properties.join(";")})</div>`
         });
 
         document.getElementById("productFinder").innerHTML = html;
