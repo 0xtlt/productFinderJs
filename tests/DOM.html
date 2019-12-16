@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ProductFinder - Example</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: sans-serif;
+        }
+
+        button {
+            border: none;
+            background: #5c7fff;
+        }
+
+        button.active {
+            color: white;
+            background: black;
+        }
+
+        #productFinder {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="select">
+    <button class="productfinder-dom" pf-dom-active="active" pf-dom-property="material_silver 925">Silver 925</button>
+    <button class="productfinder-dom" pf-dom-active="active" pf-dom-property="material_silver 935">Silver 935</button>
+    <button class="productfinder-dom" pf-dom-active="active" pf-dom-price="250">250€</button>
+    <button class="productfinder-dom" pf-dom-active="active" pf-dom-discount="50%">-50%</button>
+</div>
+<div id="productFinder">
+
+</div>
+<script src="../productFinder.js"></script>
+<script src="../productFinderDOM.js"></script>
+<script>
+    const products = [
+        {
+            "collection": "beads",
+            "name": "beads title",
+            "properties": ["material_silver 925", "weight_17g"],
+            "data": {
+                "background": "placeholder.png"
+            },
+            "price": 280,
+            "discount": false
+        },
+        {
+            "collection": "beads",
+            "name": "second beads title",
+            "properties": ["material_silver 925", "weight_15g"],
+            "data": {
+                "background": "placeholder.png"
+            },
+            "price": 500,
+            "discount": 250
+        },
+        {
+            "collection": "beads",
+            "name": "other beads title",
+            "properties": ["material_silver 935", "weight_15g"],
+            "data": {
+                "background": "placeholder.png"
+            },
+            "price": 400,
+            "discount": 250
+        }
+    ];
+
+    function display(products){
+        let html = "";
+        products.forEach(product => {
+            html += `<div>${product.name} | ${product.discount ? product.discount : product.price}€ | (${product.properties.join(";")})</div>`
+        });
+
+        document.getElementById("productFinder").innerHTML = html;
+    }
+
+    const SYSTEM = new ProductFinderDOM();
+    SYSTEM.loadProducts(products);
+    SYSTEM.elementFinder();
+    SYSTEM.onChange(() => {
+        display(SYSTEM.get());
+    });
+    display(SYSTEM.get());
+</script>
+</body>
+</html>

@@ -1,3 +1,9 @@
+## 1.1.0 (December 15, 2019)
+
+### DOM update
+- Product Finder ``hasFilter`` function
+- Product Finder DOM
+
 ## 1.0.1 (December 15, 2019)
 - Update Readme with Schema of products
 

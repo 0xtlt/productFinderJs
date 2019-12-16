@@ -141,12 +141,12 @@ class ProductFinder {
                 }
                 break;
             case "price":
-                if(!/^(([0-9]|:)+)$/g.test(value)){
+                if (!/^(([0-9]|:)+)$/g.test(value)) {
                     throw new Error("The format is number or numberMin:numberMax");
                 }
-                if(value.includes(":")){
+                if (value.includes(":")) {
                     let minMax = value.split(":");
-                    if(+minMax[0] > +minMax[1]) {
+                    if (+minMax[0] > +minMax[1]) {
                         throw new Error("The format is number or numberMin:numberMax");
                     }
                 }
@@ -186,5 +186,31 @@ class ProductFinder {
                 }
                 break;
         }
+    }
+
+    /**
+     * @param {string} type
+     * @param {*} value
+     */
+    hasFilter(type, value) {
+        switch (type) {
+            case "property":
+                if (this.filters.properties.includes(value)) {
+                    return true;
+                }
+                break;
+            case "price":
+                if (this.filters.price.includes(value)) {
+                    return true;
+                }
+                break;
+            case "discount":
+                if (this.filters.discount.includes(value)) {
+                    return true;
+                }
+                break;
+        }
+
+        return false;
     }
 }
